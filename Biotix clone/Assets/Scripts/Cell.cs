@@ -7,31 +7,41 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
     public int amountCells;
-    public OwnerOfCell owner;
-    [HideInInspector] public bool selected;
+    public OwnerOfCell startOwner;
+
+    public Player player;
 
     [SerializeField] private int maxAmountCells;
     [SerializeField] private float plusOneCellRate;
     [SerializeField] private Color startColor;
     [Space(15)]
-    [SerializeField] private TMP_Text AmountOfCellsText;
+    [SerializeField] private LineRenderer line;
+    [SerializeField] private GameObject parentOfMiniCells;
+    [SerializeField] private GameObject atackCells;
+    [SerializeField] private TMP_Text amountOfCellsText;
     [SerializeField] private Image cellCenter;
     [SerializeField] private Image selectedRing;
 
 
     private void Start()
     {
+        OffLine();
+
         selectedRing.enabled = false;
         cellCenter.color = startColor;
         UpdateValue();
+
+        player = new Player { owner = startOwner, color = startColor };
+
+        if (player.owner != OwnerOfCell.None)
+            StartCoroutine(PlusOneCellRoutine());
     }
 
 
     public Cell SelectCell(Player player)
     {
-        if (owner == player.owner)
+        if (this.player.owner == player.owner)
         {
-            selected = true;
             selectedRing.enabled = true;
             return this;
         }
@@ -41,42 +51,60 @@ public class Cell : MonoBehaviour
 
     public void UnSelecte()
     {
-        selected = false;
         selectedRing.enabled = false;
+        line.enabled = false;
     }
 
 
-    public Vector2 SelectedAsTarget()
+    public Vector3 SelectedAsTarget()
     {
-        return new Vector2(transform.position.x, transform.position.y);
+        return transform.position;
     }
 
 
-    public void test()
-        => print("test cell");
-
-
-    public void Atack(Vector2 target)
+    // Выпускает пацанов
+    public void Atack(Vector3 target)
     {
-        // выпускает пацанов
+        Player a = new Player { color = Color.blue, owner = OwnerOfCell.Player1 };    ///////////////////////// test
+
+
+        int cells = (int)Mathf.Round((float)amountCells / 2);
+
+        for (int i = 0; i < cells; i++)
+        {
+            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-25f, 25f), transform.position.y + Random.Range(-25f, 25f), 0);
+
+            GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
+
+            miniCell.GetComponent<MiniCell>().atack(target, a);
+        }
+        amountCells -= cells;
+        UpdateValue();
     }
 
 
-    public void TakeDamage()
+    // Cоприкaсается с пацанами
+    public void TakeCells(int amount, Player player)
     {
-        // соприкосается с пацанами
+        if (player.owner == this.player.owner)
+            amountCells += amount;
+        else
+        {
+            amountCells -= amount;
+            if (amountCells < 0)
+            {
+                CaptureCell(player);
+            }
+        }
+        UpdateValue();
     }
 
 
-    private void CaptureCell()
+    private void CaptureCell(Player player)
     {
         StartCoroutine(PlusOneCellRoutine());
-    }
-
-
-    private void UnCaptureCell()
-    {
-        StartCoroutine(PlusOneCellRoutine());
+        this.player = player;
+        cellCenter.color = this.player.color;
     }
 
 
@@ -84,15 +112,17 @@ public class Cell : MonoBehaviour
     {
         if (amountCells == 0)
         {
-            AmountOfCellsText.text = string.Empty;
-            owner = OwnerOfCell.None;
+            amountOfCellsText.text = string.Empty;
+            player = new Player { owner = OwnerOfCell.None, color = Color.white };
             StopCoroutine(PlusOneCellRoutine());
             return;
         }
         else if (amountCells >= maxAmountCells)
             amountCells = maxAmountCells;
+        else if (amountCells < 0)
+            amountCells = 1;
 
-        AmountOfCellsText.text = amountCells.ToString();
+        amountOfCellsText.text = amountCells.ToString();
     }
 
 
@@ -100,11 +130,23 @@ public class Cell : MonoBehaviour
     {
         yield return new WaitForSeconds(plusOneCellRate);
 
-        if (owner != OwnerOfCell.None)
+        if (player.owner != OwnerOfCell.None)
         {
             amountCells++;
             UpdateValue();
         }
         StartCoroutine(PlusOneCellRoutine());
     }
+
+
+    public void DrawLine(Vector3 touchPos)
+    {
+        line.enabled = true;
+        Vector3[] positions = new Vector3[] { transform.position, touchPos };
+        line.SetPositions(positions);
+    }
+
+
+    public void OffLine()
+        => line.enabled = false;
 }

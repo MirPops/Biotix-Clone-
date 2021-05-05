@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Color colorOfPlayer;
     private Player player;
-    private List<Cell> selectedCells;
+    private List<Cell1> selectedCells;
 
 
     private void Start()
     {
         player = new Player { owner = OwnerOfCell.Player1, color = colorOfPlayer };
-        selectedCells = new List<Cell>();
+        selectedCells = new List<Cell1>();
     }
 
 
@@ -21,44 +21,71 @@ public class PlayerController : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            RaycastHit2D hit = Physics2D.Raycast(touch.position, Vector2.zero);
+            Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
+
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+            if (selectedCells.Count > 0)
+            {
+                for (int i = 0; i < selectedCells.Count; i++)
+                {
+                    selectedCells[i].DrawLine(pos);
+                }
+            }
+
+
             if (hit.transform != null)
             {
-                Cell selectedCell = hit.transform.GetComponent<Cell>();
+                Cell1 selectedCell = hit.transform.GetComponent<Cell1>();
 
-                if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) && !selectedCells.Contains(selectedCell))
+                if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
                 {
-                    selectedCells.Add(selectedCell);
-                    selectedCell.SelectCell(player);
-
-                    print("touch began or moved");
-                    print(selectedCells.Count);
+                    selectedCells.Add(selectedCell.SelectCell(player));
+                    return;
                 }
-                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && selectedCell.owner != player.owner)
+                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Began) && selectedCell.player.owner != player.owner)
                 {
-                    print("touch ended or canceled");
+                    Vector3 target = selectedCell.SelectedAsTarget();
+                    target.z = 0;
 
-
-                    Vector2 target = selectedCell.SelectedAsTarget();
-                    foreach (Cell cell in selectedCells)
+                    foreach (Cell1 cell in selectedCells)
                     {
                         cell.Atack(target);
                     }
+                    UnSelect();
                 }
             }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            //else if (selectedCells.Count > 0)
+            //{
+            //    for (int i = 0; i < selectedCells.Count; i++)
+            //    {
+            //        Vector3 pos = new Vector3(touch.position.x, touch.position.y, 0);
+            //        selectedCells[i].DrawLine(pos);
+            //    }
+            //}
+            else if (touch.phase == TouchPhase.Began)
             {
-                print("delete selected");
-
                 if (selectedCells.Count > 0)
                 {
-                    foreach (Cell cell in selectedCells)
-                    {
-                        cell.UnSelecte();
-                    }
-                    selectedCells.Clear();
+                    UnSelect();
                 }
             }
         }
+        else if (selectedCells.Count > 0)
+        {
+            for (int i = 0; i < selectedCells.Count; i++)
+            {
+                selectedCells[i].OffLine();
+            }
+        }
+    }
+
+    private void UnSelect()
+    {
+        foreach (Cell1 cell in selectedCells)
+        {
+            cell.UnSelecte();
+        }
+        selectedCells.Clear();
     }
 }
