@@ -72,9 +72,10 @@ public class Cell : MonoBehaviour
 
         for (int i = 0; i < cells; i++)
         {
-            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-25f, 25f), transform.position.y + Random.Range(-25f, 25f), 0);
+            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), transform.position.z);
 
             GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
+            //miniCell.transform.localPosition = new Vector3(miniCell.transform.localPosition.x, miniCell.transform.localPosition.y, 0);
 
             miniCell.GetComponent<MiniCell>().atack(target, a);
         }
@@ -142,7 +143,7 @@ public class Cell : MonoBehaviour
     public void DrawLine(Vector3 touchPos)
     {
         line.enabled = true;
-        Vector3[] positions = new Vector3[] { transform.position, touchPos };
+        Vector3[] positions = new Vector3[] { new Vector3(transform.position.x, transform.position.y), touchPos };
         line.SetPositions(positions);
     }
 

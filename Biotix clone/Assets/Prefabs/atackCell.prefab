@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellCenter: {fileID: 6147880666812942063}
-  speed: 50
+  speed: 20
   rb: {fileID: 1983116610285463808}
   amount: 1
 --- !u!1 &1418732151545820217

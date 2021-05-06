@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Color colorOfPlayer;
     private Player player;
-    private List<Cell1> selectedCells;
+    private List<Cell> selectedCells;
 
 
     private void Start()
     {
         player = new Player { owner = OwnerOfCell.Player1, color = colorOfPlayer };
-        selectedCells = new List<Cell1>();
+        selectedCells = new List<Cell>();
     }
 
 
@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
 
             if (hit.transform != null)
             {
-                Cell1 selectedCell = hit.transform.GetComponent<Cell1>();
+                Cell selectedCell = hit.transform.GetComponent<Cell>();
+                if (selectedCell == null) return;
 
                 if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
                 {
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
                     Vector3 target = selectedCell.SelectedAsTarget();
                     target.z = 0;
 
-                    foreach (Cell1 cell in selectedCells)
+                    foreach (Cell cell in selectedCells)
                     {
                         cell.Atack(target);
                     }
@@ -75,14 +76,14 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < selectedCells.Count; i++)
             {
-                selectedCells[i].OffLine();
+                //selectedCells[i].OffLine();
             }
         }
     }
 
     private void UnSelect()
     {
-        foreach (Cell1 cell in selectedCells)
+        foreach (Cell cell in selectedCells)
         {
             cell.UnSelecte();
         }

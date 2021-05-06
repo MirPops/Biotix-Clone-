@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: New Layer
+    uniqueID: 1979906831
+    locked: 0
+  - name: Lines
+    uniqueID: 3011668607
+    locked: 0
+  - name: Cells
+    uniqueID: 607133873
+    locked: 0

@@ -987,7 +987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &863376071
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1047,7 +1047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863376070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0.36, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1626,7 +1626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1720942380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,7 +1676,7 @@ Canvas:
   m_GameObject: {fileID: 1720942379}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1725,7 +1725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1823059694
 Transform:
   m_ObjectHideFlags: 0
@@ -1900,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1895403543
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1909,7 +1909,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895403542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1720942383}
@@ -1934,9 +1934,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2171,6 +2171,46 @@ PrefabInstance:
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Name
       value: CellUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 8481
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.9337223
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.88970584
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.r
+      value: 0.14772677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124390887126193652, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumColorKeys
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x

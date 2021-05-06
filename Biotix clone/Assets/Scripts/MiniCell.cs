@@ -28,9 +28,9 @@ public class MiniCell : MonoBehaviour
     {
         Cell cell = collision.GetComponent<Cell>();
 
-        if (cell.transform.position == target)
+        if (cell.transform.position.x == target.x && cell.transform.position.y == target.y)
         {
-            cell.TakeCells(amount, this.player);
+            cell.TakeCells(amount, player);
             Destroy(gameObject);
         }
     }
