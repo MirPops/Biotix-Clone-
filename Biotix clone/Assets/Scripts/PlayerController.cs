@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Color colorOfPlayer;
+    [SerializeField] private OwnerOfCell owner;
     private Player player;
     private List<Cell> selectedCells;
 
 
     private void Start()
     {
-        player = new Player { owner = OwnerOfCell.Player1, color = colorOfPlayer };
+        player = PlayerManager.Instance.GetPlayer(owner);
         selectedCells = new List<Cell>();
     }
 
@@ -24,6 +24,18 @@ public class PlayerController : MonoBehaviour
             Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
 
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+            //Vector2 pos = Vector2.zero;                              // альтернатива для большей точности касания
+            //RaycastHit2D hit = new RaycastHit2D();
+            //Touch touch = Input.GetTouch(0);
+            //for (int i = 0; i < Input.touchCount; i++)
+            //{
+            //    touch = Input.GetTouch(i);
+            //    pos = Camera.main.ScreenToWorldPoint(touch.position);
+            //    hit = Physics2D.Raycast(pos, Vector2.zero);
+            //    if (hit.transform != null)
+            //        break;
+            //}
 
             if (selectedCells.Count > 0)
             {
@@ -56,14 +68,6 @@ public class PlayerController : MonoBehaviour
                     UnSelect();
                 }
             }
-            //else if (selectedCells.Count > 0)
-            //{
-            //    for (int i = 0; i < selectedCells.Count; i++)
-            //    {
-            //        Vector3 pos = new Vector3(touch.position.x, touch.position.y, 0);
-            //        selectedCells[i].DrawLine(pos);
-            //    }
-            //}
             else if (touch.phase == TouchPhase.Began)
             {
                 if (selectedCells.Count > 0)
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < selectedCells.Count; i++)
             {
-                //selectedCells[i].OffLine();
+                selectedCells[i].Offline();
             }
         }
     }

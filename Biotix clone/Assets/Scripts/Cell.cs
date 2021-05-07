@@ -7,13 +7,11 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
     public int amountCells;
-    public OwnerOfCell startOwner;
-
+    public int maxAmountCells;
     public Player player;
 
-    [SerializeField] private int maxAmountCells;
     [SerializeField] private float plusOneCellRate;
-    [SerializeField] private Color startColor;
+    [SerializeField] private OwnerOfCell startOwner = OwnerOfCell.None;
     [Space(15)]
     [SerializeField] private LineRenderer line;
     [SerializeField] private GameObject parentOfMiniCells;
@@ -25,16 +23,16 @@ public class Cell : MonoBehaviour
 
     private void Start()
     {
-        OffLine();
+        player = PlayerManager.Instance.GetPlayer(startOwner);
+        cellCenter.color = player.color;
 
-        selectedRing.enabled = false;
-        cellCenter.color = startColor;
         UpdateValue();
-
-        player = new Player { owner = startOwner, color = startColor };
+        UnSelecte();
 
         if (player.owner != OwnerOfCell.None)
             StartCoroutine(PlusOneCellRoutine());
+
+        CellManager.OnCellCreate.Invoke(this);
     }
 
 
@@ -52,22 +50,21 @@ public class Cell : MonoBehaviour
     public void UnSelecte()
     {
         selectedRing.enabled = false;
-        line.enabled = false;
+        Offline();
     }
 
 
     public Vector3 SelectedAsTarget()
-    {
-        return transform.position;
-    }
+        => transform.position;
+
+
+    public void Offline()
+        => line.enabled = false;
 
 
     // Выпускает пацанов
     public void Atack(Vector3 target)
     {
-        Player a = new Player { color = Color.blue, owner = OwnerOfCell.Player1 };    ///////////////////////// test
-
-
         int cells = (int)Mathf.Round((float)amountCells / 2);
 
         for (int i = 0; i < cells; i++)
@@ -75,9 +72,8 @@ public class Cell : MonoBehaviour
             Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), transform.position.z);
 
             GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
-            //miniCell.transform.localPosition = new Vector3(miniCell.transform.localPosition.x, miniCell.transform.localPosition.y, 0);
 
-            miniCell.GetComponent<MiniCell>().atack(target, a);
+            miniCell.GetComponent<MiniCell>().atack(target, player);
         }
         amountCells -= cells;
         UpdateValue();
@@ -104,6 +100,8 @@ public class Cell : MonoBehaviour
     private void CaptureCell(Player player)
     {
         StartCoroutine(PlusOneCellRoutine());
+        CellManager.OnCellOwnerChanged?.Invoke(this, player.owner);
+
         this.player = player;
         cellCenter.color = this.player.color;
     }
@@ -113,8 +111,12 @@ public class Cell : MonoBehaviour
     {
         if (amountCells == 0)
         {
+            CellManager.OnCellOwnerChanged?.Invoke(this, OwnerOfCell.None);
+            player = PlayerManager.nonePlayer;
+
+            cellCenter.color = player.color;
             amountOfCellsText.text = string.Empty;
-            player = new Player { owner = OwnerOfCell.None, color = Color.white };
+
             StopCoroutine(PlusOneCellRoutine());
             return;
         }
@@ -146,8 +148,4 @@ public class Cell : MonoBehaviour
         Vector3[] positions = new Vector3[] { new Vector3(transform.position.x, transform.position.y), touchPos };
         line.SetPositions(positions);
     }
-
-
-    public void OffLine()
-        => line.enabled = false;
 }
