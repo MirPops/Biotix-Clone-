@@ -14,21 +14,20 @@ public class AIBot : MonoBehaviour
     private void Start()
     {
         forAtackCells = new List<Cell>();
-
+        player = PlayerManager.Instance.GetPlayer(owner);
         StartCoroutine(AILogicRoutine());
     }
 
     private IEnumerator AILogicRoutine()
     {
         yield return new WaitForSeconds(1.5f);
-        player = PlayerManager.Instance.GetPlayer(owner);    /////////////////////////
 
 
         while (CellManager.AIBotCells.Count > 0)
         {
-            float wait = CellManager.AIBotCells.Count;
-            for (int i = 0; i < wait; i++)
-                wait *= timeStepFactor;
+            //float wait = CellManager.AIBotCells.Count;
+            //for (int i = 0; i < wait; i++)
+            //    wait *= timeStepFactor;
 
             yield return new WaitForSeconds(2f);
 
@@ -70,16 +69,16 @@ public class AIBot : MonoBehaviour
         List<int> indexes = new List<int>();
         for (int i = 0; i < CellManager.AIBotCells.Count; i++)
             indexes.Add(i);
-
+        
         while (indexes.Count > 0)
         {
             int rand = Random.Range(0, indexes.Count);
             Cell cell = CellManager.AIBotCells[rand];
-
+            
             if (cell.amountCells >= cell.maxAmountCells / 2)
                 return cell;
             else
-                indexes.Remove(rand);
+                indexes.RemoveAt(rand);
         }
         return null;
     }

@@ -10,6 +10,7 @@ public class Cell : MonoBehaviour
     public int maxAmountCells;
     public Player player;
 
+    [SerializeField] private float offSetSpawnCells = 0.5f;
     [SerializeField] private float plusOneCellRate;
     [SerializeField] private OwnerOfCell startOwner = OwnerOfCell.None;
     [Space(15)]
@@ -69,7 +70,8 @@ public class Cell : MonoBehaviour
 
         for (int i = 0; i < cells; i++)
         {
-            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f), transform.position.z);
+            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-offSetSpawnCells, offSetSpawnCells), 
+                transform.position.y + Random.Range(-offSetSpawnCells, offSetSpawnCells), transform.position.z);
 
             GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
 
@@ -80,7 +82,7 @@ public class Cell : MonoBehaviour
     }
 
 
-    // Cоприкaсается с пацанами
+    // Cоприкaсается с пацанамиs
     public void TakeCells(int amount, Player player)
     {
         if (player.owner == this.player.owner)

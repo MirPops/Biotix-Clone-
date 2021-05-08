@@ -27,11 +27,7 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-    }
 
-
-    private void Start()
-    {
         ColorOfPlayers = new Dictionary<OwnerOfCell, Color>()
         {
             { OwnerOfCell.Player1, colorOfPlayer1 },
