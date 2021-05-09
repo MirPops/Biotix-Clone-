@@ -1,35 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class AIBot : MonoBehaviour
 {
-    public float timeStepFactor;
-    [SerializeField] private OwnerOfCell owner;
-    private Player player;
-    private List<Cell> forAtackCells;
+    [Range(0.5f, 1f)]
+    [SerializeField] private float timeStepFactor = 0.8f;
+    [Range(0.5f, 1f)]
+    [SerializeField] private float SelecteCellFactor = 1f;
+    [SerializeField] private float startTimeStep = 2f;
 
 
     private void Start()
     {
-        forAtackCells = new List<Cell>();
-        player = PlayerManager.Instance.GetPlayer(owner);
         StartCoroutine(AILogicRoutine());
     }
+
 
     private IEnumerator AILogicRoutine()
     {
         yield return new WaitForSeconds(1.5f);
 
-
         while (CellManager.AIBotCells.Count > 0)
         {
-            //float wait = CellManager.AIBotCells.Count;
-            //for (int i = 0; i < wait; i++)
-            //    wait *= timeStepFactor;
-
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(TimeStep());
 
             Cell cellForAtack = SelectCellForAtack();
             if (cellForAtack != null)
@@ -41,6 +35,8 @@ public class AIBot : MonoBehaviour
         }
     }
 
+
+    // Ищет ближайщую не свою клетку от той что в параметрах
     private Cell FindNearests(Cell from)
     {
         int index = 0;
@@ -48,6 +44,8 @@ public class AIBot : MonoBehaviour
 
         cells.AddRange(CellManager.noneCells);
         cells.AddRange(CellManager.Player1Cells);
+
+        if (cells.Count == 0) return null;
 
         float min = (cells[index].transform.position - from.transform.position).magnitude;
 
@@ -64,6 +62,22 @@ public class AIBot : MonoBehaviour
         return cells[index];
     }
 
+
+    // Ищет рандомную не свою клетку
+    private Cell FindRandom()
+    {
+        List<Cell> cells = new List<Cell>();
+
+        cells.AddRange(CellManager.noneCells);
+        cells.AddRange(CellManager.Player1Cells);
+
+        if (cells.Count == 0) return null;
+
+        return cells[Random.Range(0, cells.Count)];
+    }
+
+
+    // Выбирает почти рандомно свою клетку для атаки, у которой больше запас клеток чем половина от максимального запаса
     private Cell SelectCellForAtack()
     {
         List<int> indexes = new List<int>();
@@ -72,14 +86,27 @@ public class AIBot : MonoBehaviour
         
         while (indexes.Count > 0)
         {
-            int rand = Random.Range(0, indexes.Count);
-            Cell cell = CellManager.AIBotCells[rand];
-            
-            if (cell.amountCells >= cell.maxAmountCells / 2)
+            int randIndex = Random.Range(0, indexes.Count);
+            Cell cell = CellManager.AIBotCells[randIndex];
+
+            float randFactor = Random.Range(0.5f, SelecteCellFactor);      ////////
+
+            if (cell.amountCells >= (int)(cell.maxAmountCells * randFactor) / 2)
                 return cell;
             else
-                indexes.RemoveAt(rand);
+                indexes.RemoveAt(randIndex);
         }
         return null;
+    }
+
+
+    // Чем больше клеток под контролем тем быстрее думает
+    private float TimeStep()
+    {
+        float timeStep = startTimeStep;
+        float cellsAmount = CellManager.AIBotCells.Count;
+        for (int i = 0; i < cellsAmount; i++)
+            timeStep *= timeStepFactor;
+        return timeStep;
     }
 }

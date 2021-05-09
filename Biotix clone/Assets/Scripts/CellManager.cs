@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    public static List<Cell> noneCells;
-    public static List<Cell> Player1Cells;
-    public static List<Cell> AIBotCells;
+    public static List<Cell> noneCells { get; private set; }
+    public static List<Cell> Player1Cells { get; private set; }
+    public static List<Cell> AIBotCells { get; private set; }
+
     public static System.Action<Cell> OnCellCreate;
     public static System.Action<Cell, OwnerOfCell> OnCellOwnerChanged;
 
