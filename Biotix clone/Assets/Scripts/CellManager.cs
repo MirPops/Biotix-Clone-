@@ -16,6 +16,7 @@ public class CellManager : MonoBehaviour
         noneCells = new List<Cell>();
         Player1Cells = new List<Cell>();
         AIBotCells = new List<Cell>();
+
         OnCellCreate += PlusCell;
         OnCellOwnerChanged += CellOwnerChanged;
     }

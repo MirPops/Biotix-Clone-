@@ -8,6 +8,8 @@ public class AIBot : MonoBehaviour
     [SerializeField] private float timeStepFactor = 0.8f;
     [Range(0.5f, 1f)]
     [SerializeField] private float SelecteCellFactor = 1f;
+    [Range(0f, 1f)]
+    [SerializeField] private float RandFactor = 0.5f;
     [SerializeField] private float startTimeStep = 2f;
 
 
@@ -24,14 +26,19 @@ public class AIBot : MonoBehaviour
         while (CellManager.AIBotCells.Count > 0)
         {
             yield return new WaitForSeconds(TimeStep());
-
+            
             Cell cellForAtack = SelectCellForAtack();
             if (cellForAtack != null)
             {
-                Cell targetCell = FindNearests(cellForAtack);
-                cellForAtack.Atack(targetCell.SelectedAsTarget());
-            }
+                Cell targetCell;
+                if (Random.value < RandFactor)
+                    targetCell = FindRandom();
+                else
+                    targetCell = FindNearests(cellForAtack);
 
+                if (targetCell != null)
+                    cellForAtack.Atack(targetCell.SelectedAsTarget());
+            }
         }
     }
 
@@ -77,7 +84,7 @@ public class AIBot : MonoBehaviour
     }
 
 
-    // Выбирает почти рандомно свою клетку для атаки, у которой больше запас клеток чем половина от максимального запаса
+    // Выбирает почти рандомно свою клетку для атаки, у которой больше запас клеток чем половина от максимального запаса(зависет от SelecteCellFactor)
     private Cell SelectCellForAtack()
     {
         List<int> indexes = new List<int>();

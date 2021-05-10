@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
-    public int amountCells;
+    public int amountCells = -1;
     public int maxAmountCells;
     public Player player;
 
@@ -25,6 +25,8 @@ public class Cell : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.Instance.GetPlayer(startOwner);
+        if (amountCells == -1)
+            amountCells = maxAmountCells / 2;
         cellCenter.color = player.color;
 
         UpdateValue();

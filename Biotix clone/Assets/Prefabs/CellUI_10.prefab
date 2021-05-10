@@ -71,8 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831c9f4993730074393136f6fbbdcfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountCells: 10
+  amountCells: -1
   maxAmountCells: 20
+  offSetSpawnCells: 0.5
   plusOneCellRate: 1.5
   startOwner: 2
   line: {fileID: 2124390887126193652}
@@ -269,8 +270,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.26
-  m_fontSizeBase: 30.26
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
