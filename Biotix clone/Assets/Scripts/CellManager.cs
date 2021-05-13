@@ -25,6 +25,11 @@ public class CellManager : MonoBehaviour
     {
         GetCorrectArr(cell.player.owner).Remove(cell);
         GetCorrectArr(newOwner).Add(cell);
+
+        if (Player1Cells.Count == 0)
+            GameManager.OnEndLevel?.Invoke(OwnerOfCell.AIBot);
+        else if (AIBotCells.Count == 0)
+            GameManager.OnEndLevel?.Invoke(OwnerOfCell.Player1);
     }
 
     private List<Cell> GetCorrectArr(OwnerOfCell owner)
@@ -39,7 +44,7 @@ public class CellManager : MonoBehaviour
                 return noneCells;
             default:
                 {
-                    print("Warrior!!! UnOwned Cell, be carefull!!!");
+                    print("Warning!!! UnOwned Cell, be carefull!!!");
                     return null;
                 }
         }

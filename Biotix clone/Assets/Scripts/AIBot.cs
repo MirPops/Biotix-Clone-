@@ -11,6 +11,7 @@ public class AIBot : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float RandFactor = 0.5f;
     [SerializeField] private float startTimeStep = 2f;
+    //[SerializeField] private bool smartBot = false;
 
 
     private void Start()
@@ -96,9 +97,9 @@ public class AIBot : MonoBehaviour
             int randIndex = Random.Range(0, indexes.Count);
             Cell cell = CellManager.AIBotCells[randIndex];
 
-            float randFactor = Random.Range(0.5f, SelecteCellFactor);      ////////
+            float randFactor = Random.Range(0.5f, SelecteCellFactor);
 
-            if (cell.amountCells >= (int)(cell.maxAmountCells * randFactor) / 2)
+            if (cell.amountCells >= (int)(cell.maxAmountCells * randFactor) / 2)      // Ќедоведенна€ до ума рациональность бота
                 return cell;
             else
                 indexes.RemoveAt(randIndex);
@@ -114,6 +115,7 @@ public class AIBot : MonoBehaviour
         float cellsAmount = CellManager.AIBotCells.Count;
         for (int i = 0; i < cellsAmount; i++)
             timeStep *= timeStepFactor;
+
         return timeStep;
     }
 }

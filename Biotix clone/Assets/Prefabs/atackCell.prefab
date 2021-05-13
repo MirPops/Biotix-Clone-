@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 143916889750094826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.444636, y: 0.444636, z: 0.296424}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 6298513363722353086}
   - {fileID: 8065452497905844970}
@@ -92,6 +92,7 @@ MonoBehaviour:
   speedFactor: 1.1
   speed: 2
   cellCenter: {fileID: 6147880666812942063}
+  cellRadius: {fileID: 439227042823297158}
   rb: {fileID: 1983116610285463808}
 --- !u!1 &1418732151545820217
 GameObject:

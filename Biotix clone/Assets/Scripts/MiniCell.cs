@@ -8,6 +8,7 @@ public class MiniCell : MonoBehaviour
     [SerializeField] private float speedFactor = 1.1f;
     [SerializeField] private float speed = 20f;
     [SerializeField] private Image cellCenter;
+    [SerializeField] private Image cellRadius;
     [SerializeField] private Rigidbody2D rb;
     private Player player;
     private int amount = 1;
@@ -19,7 +20,7 @@ public class MiniCell : MonoBehaviour
     {
         this.target = target;
         this.player = player;
-        cellCenter.color = player.color;
+        cellCenter.color = cellRadius.color = player.color;
 
         Vector2 pos = new Vector2(transform.position.x, transform.position.y);
         rb.velocity = (this.target - pos).normalized * (Random.Range(speed / speedFactor, speed * speedFactor));

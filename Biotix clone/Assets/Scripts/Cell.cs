@@ -25,15 +25,9 @@ public class Cell : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.Instance.GetPlayer(startOwner);
-        if (amountCells == -1)
-            amountCells = maxAmountCells / 2;
-        cellCenter.color = player.color;
 
-        UpdateValue();
+        FirstUpdateValue();
         UnSelecte();
-
-        if (player.owner != OwnerOfCell.None)
-            StartCoroutine(PlusOneCellRoutine());
 
         CellManager.OnCellCreate.Invoke(this);
     }
@@ -72,7 +66,7 @@ public class Cell : MonoBehaviour
 
         for (int i = 0; i < cells; i++)
         {
-            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-offSetSpawnCells, offSetSpawnCells), 
+            Vector3 randomPos = new Vector3(transform.position.x + Random.Range(-offSetSpawnCells, offSetSpawnCells),
                 transform.position.y + Random.Range(-offSetSpawnCells, offSetSpawnCells), transform.position.z);
 
             GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
@@ -108,6 +102,23 @@ public class Cell : MonoBehaviour
 
         this.player = player;
         cellCenter.color = this.player.color;
+    }
+
+
+    private void FirstUpdateValue()
+    {
+        cellCenter.color = player.color;
+        if (player.owner != OwnerOfCell.None)
+            StartCoroutine(PlusOneCellRoutine());
+
+        if (amountCells == -1)
+            amountCells = maxAmountCells / 2;
+        else if (amountCells > maxAmountCells)
+            amountCells = maxAmountCells;
+        else if (amountCells == 0 || amountCells < 0)
+            amountOfCellsText.text = string.Empty;
+        else
+            amountOfCellsText.text = amountCells.ToString();
     }
 
 

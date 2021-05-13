@@ -13,12 +13,8 @@ public class PlayerManager : MonoBehaviour
     private Dictionary<OwnerOfCell, Color> ColorOfPlayers;
 
 
-    public Color GetColorOfPlayer(OwnerOfCell owner)
-        => ColorOfPlayers[owner];
-
-
     public Player GetPlayer(OwnerOfCell owner)
-        => new Player { owner = owner, color = GetColorOfPlayer(owner) };
+        => new Player { owner = owner, color = ColorOfPlayers[owner] };
 
 
     private void Awake()
@@ -34,6 +30,6 @@ public class PlayerManager : MonoBehaviour
             { OwnerOfCell.AIBot, colorOfBotAi },
             { OwnerOfCell.None, colorOfNonePlayer }
         };
-        nonePlayer = new Player { owner = OwnerOfCell.None, color = ColorOfPlayers[OwnerOfCell.None] };
+        nonePlayer = new Player { owner = OwnerOfCell.None, color = colorOfNonePlayer };
     }
 }

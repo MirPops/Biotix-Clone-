@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private OwnerOfCell owner;
+    [SerializeField] private Camera mainCamera;
     private Player player;
     private List<Cell> selectedCells;
 
@@ -20,22 +21,23 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-            Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
-
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            //Vector2 pos = Vector2.zero;                              // альтернатива для большей точности касания
-            //RaycastHit2D hit = new RaycastHit2D();
+            // Первоначальный план
             //Touch touch = Input.GetTouch(0);
-            //for (int i = 0; i < Input.touchCount; i++)
-            //{
-            //    touch = Input.GetTouch(i);
-            //    pos = Camera.main.ScreenToWorldPoint(touch.position);
-            //    hit = Physics2D.Raycast(pos, Vector2.zero);
-            //    if (hit.transform != null)
-            //        break;
-            //}
+            //Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
+            //RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+            // Альтернатива для большей точности касания
+            Vector2 pos = Vector2.zero;                              
+            RaycastHit2D hit = new RaycastHit2D();
+            Touch touch = Input.GetTouch(0);
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                touch = Input.GetTouch(i);
+                pos = mainCamera.ScreenToWorldPoint(touch.position);
+                hit = Physics2D.Raycast(pos, Vector2.zero);
+                if (hit.transform != null)
+                    break;
+            }
 
             if (selectedCells.Count > 0)
             {
