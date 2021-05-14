@@ -26,10 +26,8 @@ public class CellManager : MonoBehaviour
         GetCorrectArr(cell.player.owner).Remove(cell);
         GetCorrectArr(newOwner).Add(cell);
 
-        if (Player1Cells.Count == 0)
-            GameManager.OnEndLevel?.Invoke(OwnerOfCell.AIBot);
-        else if (AIBotCells.Count == 0)
-            GameManager.OnEndLevel?.Invoke(OwnerOfCell.Player1);
+        if (Player1Cells.Count == 0 || AIBotCells.Count == 0)
+            GameManager.OnEndLevel?.Invoke();
     }
 
     private List<Cell> GetCorrectArr(OwnerOfCell owner)

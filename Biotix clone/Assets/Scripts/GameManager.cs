@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private float delayForNextLevel = 2f;
     [HideInInspector] public static bool isPaused;
-    public static System.Action<OwnerOfCell> OnEndLevel;
+    public static System.Action OnEndLevel;
 
     void Start()
     {
@@ -29,11 +30,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadNextLevel(OwnerOfCell owner)
+    private void LoadNextLevel()
+        => StartCoroutine(NextLevelRoutine());
+
+    private IEnumerator NextLevelRoutine()
     {
+        yield return new WaitForSeconds(delayForNextLevel);
+
+        if (CellManager.AIBotCells.Count == 0)
+            print($"win - {OwnerOfCell.Player1}");
+        else if (CellManager.Player1Cells.Count == 0)
+            print($"win - {OwnerOfCell.AIBot}");
+
+        while (isPaused)
+            yield return new WaitForSeconds(0.5f);
+
         int index = SceneManager.GetActiveScene().buildIndex;
         if (index < 2)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        print($"Win - {owner}");
+            SceneManager.LoadScene(index + 1);
     }
 }
