@@ -279,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -744,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -897,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -1014,7 +1014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13c028c295368c4ab0a29340c8a34e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayForNextLevel: 2
 --- !u!4 &488750832
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -2353,7 +2352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -2831,7 +2830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x
@@ -3151,7 +3150,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 50
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3756,7 +3755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429357426326648755, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6106757699128756978, guid: 4441e886baaca114baab47959cdeac9d, type: 3}
       propertyPath: m_Pivot.x

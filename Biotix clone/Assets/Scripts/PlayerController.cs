@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
                     UnSelect();
                 }
             }
-            else if (touch.phase == TouchPhase.Began)
+            else if (touch.phase == TouchPhase.Ended)
             {
                 if (selectedCells.Count > 0)
                 {

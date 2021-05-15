@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ADsManager
     - AIBot
     - Cell
     - CellManager
@@ -37,6 +38,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Advertisements.Editor.dll:
+    - UnityEngine.Advertisements.Placeholder
+    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -45,7 +49,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/FirstLVL.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -69,45 +73,193 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1462}
+      Script: {instanceID: 1510}
     - Class: 114
-      Script: {instanceID: 1464}
+      Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 1504}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1792}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 2104}
+      Script: {instanceID: 2116}
     - Class: 114
-      Script: {instanceID: 2488}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2832}
+      Script: {instanceID: 2812}
     - Class: 114
-      Script: {instanceID: 3022}
+      Script: {instanceID: 2994}
     - Class: 114
-      Script: {instanceID: 3134}
+      Script: {instanceID: 3106}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 3768}
     - Class: 114
-      Script: {instanceID: 3962}
+      Script: {instanceID: 3904}
     - Class: 114
-      Script: {instanceID: 4168}
+      Script: {instanceID: 4096}
     - Class: 114
-      Script: {instanceID: 4288}
+      Script: {instanceID: 4208}
     - Class: 114
-      Script: {instanceID: 4294}
+      Script: {instanceID: 4212}
     - Class: 114
-      Script: {instanceID: 4414}
+      Script: {instanceID: 4332}
     - Class: 114
-      Script: {instanceID: 4586}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 4628}
+      Script: {instanceID: 4538}
     - Class: 114
-      Script: {instanceID: 4796}
+      Script: {instanceID: 4662}
+    - Class: 114
+      Script: {instanceID: 4708}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 120
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/SecondLVL.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1510}
+    - Class: 114
+      Script: {instanceID: 1512}
+    - Class: 114
+      Script: {instanceID: 1550}
+    - Class: 114
+      Script: {instanceID: 1826}
+    - Class: 114
+      Script: {instanceID: 2478}
+    - Class: 114
+      Script: {instanceID: 2624}
+    - Class: 114
+      Script: {instanceID: 2664}
+    - Class: 114
+      Script: {instanceID: 2812}
+    - Class: 114
+      Script: {instanceID: 2994}
+    - Class: 114
+      Script: {instanceID: 3106}
+    - Class: 114
+      Script: {instanceID: 3768}
+    - Class: 114
+      Script: {instanceID: 3904}
+    - Class: 114
+      Script: {instanceID: 4212}
+    - Class: 114
+      Script: {instanceID: 4332}
+    - Class: 114
+      Script: {instanceID: 4496}
+    - Class: 114
+      Script: {instanceID: 4662}
+    - Class: 114
+      Script: {instanceID: 4708}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 120
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/ThirdLVL.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1510}
+    - Class: 114
+      Script: {instanceID: 1512}
+    - Class: 114
+      Script: {instanceID: 1550}
+    - Class: 114
+      Script: {instanceID: 1826}
+    - Class: 114
+      Script: {instanceID: 2478}
+    - Class: 114
+      Script: {instanceID: 2624}
+    - Class: 114
+      Script: {instanceID: 2664}
+    - Class: 114
+      Script: {instanceID: 2812}
+    - Class: 114
+      Script: {instanceID: 2994}
+    - Class: 114
+      Script: {instanceID: 3106}
+    - Class: 114
+      Script: {instanceID: 3768}
+    - Class: 114
+      Script: {instanceID: 3904}
+    - Class: 114
+      Script: {instanceID: 4212}
+    - Class: 114
+      Script: {instanceID: 4332}
+    - Class: 114
+      Script: {instanceID: 4496}
+    - Class: 114
+      Script: {instanceID: 4662}
+    - Class: 114
+      Script: {instanceID: 4708}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -231,6 +383,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Monetization.Editor.dll
+    namespaceName: UnityEngine.Monetization
+    className: Placeholder
+  - hash:
+      serializedVersion: 2
       Hash: e6f0efd0e20669d577e9d21526b3d3f9
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -289,12 +447,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
-  - hash:
-      serializedVersion: 2
-      Hash: f9e4c32b1fed80aca8081b6065b44476
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Cell1
   - hash:
       serializedVersion: 2
       Hash: cfdd0010efd7b54c2b7512656dbc9119
@@ -603,12 +755,6 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 814fd7a0861aba5f61883baf40bed542
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MiniCell1
-  - hash:
-      serializedVersion: 2
       Hash: 1e7e3e5eeaa9c0d44e95c4170a525e1f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -754,12 +900,36 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.Editor.dll
+    namespaceName: UnityEngine.Advertisements.Utilities
+    className: ApplicationQuit
+  - hash:
+      serializedVersion: 2
+      Hash: 88e2c6f501bf5dead831a3e44c30de40
+    assemblyName: UnityEngine.Advertisements.Editor.dll
+    namespaceName: UnityEngine.Advertisements.Platform.Editor
+    className: BannerPlaceholder
+  - hash:
+      serializedVersion: 2
+      Hash: a325152ad9563ed900af221c132fea36
+    assemblyName: UnityEngine.Advertisements.Editor.dll
+    namespaceName: UnityEngine.Advertisements.Utilities
+    className: CoroutineExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.Editor.dll
+    namespaceName: UnityEngine.Advertisements
+    className: Placeholder
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 7dccd506057a375adcd46ceb6a49e3cd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -789,7 +959,7 @@ ScriptsOnlyBuild:
     className: DropdownSample
   - hash:
       serializedVersion: 2
-      Hash: 07209b039ff0f44f04a89cdbe25b6393
+      Hash: d6a1731be7af0cb0f21b45192a97d255
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MiniCell
@@ -843,13 +1013,19 @@ ScriptsOnlyBuild:
     className: TextConsoleSimulator
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ADsManager
+  - hash:
+      serializedVersion: 2
       Hash: e63944317d2f5958e31963668bb29158
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: VertexZoom
   - hash:
       serializedVersion: 2
-      Hash: 4c30d171fb474ab3c51379177ea1a535
+      Hash: a7195e44cb87eb030690cd9f935cd686
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -909,6 +1085,8 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/FirstLVL.unity
+  - Assets/Scenes/SecondLVL.unity
+  - Assets/Scenes/ThirdLVL.unity
   playerPath: D:/Projects Unity/Biotix Clone Github/Biotix clone/build/biotix clone
-    test7.apk
+    test2.apk

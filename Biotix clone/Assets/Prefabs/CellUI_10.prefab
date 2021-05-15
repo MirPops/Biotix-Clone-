@@ -81,6 +81,7 @@ MonoBehaviour:
   atackCells: {fileID: 143916889750094826, guid: df67619034d774d43838b0bea6fa5848, type: 3}
   amountOfCellsText: {fileID: 2587958296753685221}
   cellCenter: {fileID: 5862421242413019830}
+  cellRadius: {fileID: 149282071991397599}
   selectedRing: {fileID: 6034776025226618340}
 --- !u!50 &-2799742131737704706
 Rigidbody2D:

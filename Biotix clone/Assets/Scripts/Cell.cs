@@ -19,6 +19,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject atackCells;
     [SerializeField] private TMP_Text amountOfCellsText;
     [SerializeField] private Image cellCenter;
+    [SerializeField] private Image cellRadius;
     [SerializeField] private Image selectedRing;
 
 
@@ -30,6 +31,11 @@ public class Cell : MonoBehaviour
         UnSelecte();
 
         CellManager.OnCellCreate.Invoke(this);
+
+        //if (cellRadius != null)
+        //{
+        //    cellRadius.rectTransform.LeanScale(new Vector3();
+        //}
     }
 
 
@@ -95,6 +101,14 @@ public class Cell : MonoBehaviour
     }
 
 
+    public void DrawLine(Vector3 touchPos)
+    {
+        line.enabled = true;
+        Vector3[] positions = new Vector3[] { new Vector3(transform.position.x, transform.position.y), touchPos };
+        line.SetPositions(positions);
+    }
+
+
     private void CaptureCell(Player player)
     {
         StartCoroutine(PlusOneCellRoutine());
@@ -154,13 +168,5 @@ public class Cell : MonoBehaviour
             UpdateValue();
         }
         StartCoroutine(PlusOneCellRoutine());
-    }
-
-
-    public void DrawLine(Vector3 touchPos)
-    {
-        line.enabled = true;
-        Vector3[] positions = new Vector3[] { new Vector3(transform.position.x, transform.position.y), touchPos };
-        line.SetPositions(positions);
     }
 }
