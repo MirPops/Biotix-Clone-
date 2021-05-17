@@ -493,12 +493,14 @@ MonoBehaviour:
   maxAmountCells: 60
   offSetSpawnCells: 0.5
   plusOneCellRate: 1.5
+  minusTwoCellRate: 0.8
   startOwner: 2
   line: {fileID: 8330879256260184299}
   parentOfMiniCells: {fileID: 0}
   atackCells: {fileID: 143916889750094826, guid: df67619034d774d43838b0bea6fa5848, type: 3}
   amountOfCellsText: {fileID: 5551854845200408570}
   cellCenter: {fileID: 4593075434745212841}
+  cellRadius: {fileID: 0}
   selectedRing: {fileID: 4420762527325616379}
 --- !u!50 &4018109819438275553
 Rigidbody2D:

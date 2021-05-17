@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,70 +20,62 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 0)
         {
-            // Первоначальный план
-            //Touch touch = Input.GetTouch(0);
-            //Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
-            //RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            // Альтернатива для большей точности касания
-            Vector2 pos = Vector2.zero;                              
-            RaycastHit2D hit = new RaycastHit2D();
-            Touch touch = Input.GetTouch(0);
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                touch = Input.GetTouch(i);
-                pos = mainCamera.ScreenToWorldPoint(touch.position);
-                hit = Physics2D.Raycast(pos, Vector2.zero);
-                if (hit.transform != null)
-                    break;
-            }
-
             if (selectedCells.Count > 0)
-            {
                 for (int i = 0; i < selectedCells.Count; i++)
-                {
-                    selectedCells[i].DrawLine(pos);
-                }
-            }
+                    selectedCells[i].Offline();
+            return;
+        }
 
+        Touch touch = Input.GetTouch(0);
+        Vector2 pos = mainCamera.ScreenToWorldPoint(touch.position);
+        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
 
-            if (hit.transform != null)
+        if (hit.transform != null)
+        {
+            Cell selectedCell = hit.transform.GetComponent<Cell>();
+            if (selectedCell == null) return;
+
+            //if ((touch.phase == TouchPhase.Began || isTouchMoved(touch)) && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
+            //{
+            //    selectedCells.Add(selectedCell.SelectCell(player));
+            //    return;
+            //}
+            //else if (selectedCells.Count > 0 && ((touch.phase == TouchPhase.Began && !isTouchMoved(touch)) || (touch.phase == TouchPhase.Ended && isTouchMoved(touch))))
+            //{
+            //    Atack(selectedCell);
+            //}
+
+            // Свайп
+            if (touch.deltaPosition.magnitude > 0f)
             {
-                Cell selectedCell = hit.transform.GetComponent<Cell>();
-                if (selectedCell == null) return;
-
-                if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved) && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
-                {
+                if (touch.phase == TouchPhase.Moved && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
                     selectedCells.Add(selectedCell.SelectCell(player));
-                    return;
-                }
-                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Began) && selectedCell.player.owner != player.owner)
-                {
-                    Vector3 target = selectedCell.SelectedAsTarget();
-                    target.z = 0;
+                else if (touch.phase == TouchPhase.Ended && selectedCells.Count > 0)
+                    Atack(selectedCell);
 
-                    foreach (Cell cell in selectedCells)
-                    {
-                        cell.Atack(target);
-                    }
-                    UnSelect();
-                }
             }
+            // Просто тач
             else if (touch.phase == TouchPhase.Ended)
             {
-                if (selectedCells.Count > 0)
-                {
-                    UnSelect();
-                }
+                if (selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
+                    selectedCells.Add(selectedCell.SelectCell(player));
+                else if (selectedCells.Count > 0)
+                    Atack(selectedCell);
             }
         }
-        else if (selectedCells.Count > 0)
+        else if (touch.phase == TouchPhase.Ended && touch.deltaPosition.magnitude == 0)
+        {
+            if (selectedCells.Count > 0)
+                UnSelect();
+        }
+
+        if (selectedCells.Count > 0)
         {
             for (int i = 0; i < selectedCells.Count; i++)
             {
-                selectedCells[i].Offline();
+                selectedCells[i].DrawLine(pos);
             }
         }
     }
@@ -90,9 +83,29 @@ public class PlayerController : MonoBehaviour
     private void UnSelect()
     {
         foreach (Cell cell in selectedCells)
-        {
             cell.UnSelecte();
-        }
+
         selectedCells.Clear();
     }
+
+    private void Atack(Cell cell)
+    {
+        Vector3 target = cell.SelectedAsTarget();
+
+        if (selectedCells.Contains(cell))
+        {
+            if (selectedCells.Count == 1)
+                return;
+
+            selectedCells.Remove(cell);
+            cell.UnSelecte();
+        }
+
+        for (int i = 0; i < selectedCells.Count; i++)
+            selectedCells[i].Atack(target);
+        UnSelect();
+    }
+
+    private bool isTouchMoved(Touch touch)
+        => touch.deltaPosition.magnitude > 1.5f;
 }

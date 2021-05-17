@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedFactor: 1.1
-  speed: 2
+  speed: 1.5
   cellCenter: {fileID: 6147880666812942063}
   cellRadius: {fileID: 439227042823297158}
   rb: {fileID: 1983116610285463808}

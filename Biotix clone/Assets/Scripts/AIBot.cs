@@ -11,7 +11,6 @@ public class AIBot : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float RandFactor = 0.5f;
     [SerializeField] private float startTimeStep = 2f;
-    //[SerializeField] private bool smartBot = false;
 
 
     private void Start()
@@ -78,8 +77,7 @@ public class AIBot : MonoBehaviour
 
         cells.AddRange(CellManager.noneCells);
         cells.AddRange(CellManager.Player1Cells);
-
-        if (cells.Count == 0) return null;
+        cells.AddRange(CellManager.AIBotCells);
 
         return cells[Random.Range(0, cells.Count)];
     }

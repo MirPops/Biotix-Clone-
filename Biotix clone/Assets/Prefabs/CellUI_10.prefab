@@ -75,6 +75,7 @@ MonoBehaviour:
   maxAmountCells: 20
   offSetSpawnCells: 0.5
   plusOneCellRate: 1.5
+  minusTwoCellRate: 0.8
   startOwner: 2
   line: {fileID: 2124390887126193652}
   parentOfMiniCells: {fileID: 0}

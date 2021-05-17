@@ -11,7 +11,8 @@ public class Cell : MonoBehaviour
     public Player player;
 
     [SerializeField] private float offSetSpawnCells = 0.5f;
-    [SerializeField] private float plusOneCellRate;
+    [SerializeField] private float plusOneCellRate = 1.5f;
+    [SerializeField] private float minusTwoCellRate = 0.8f;
     [SerializeField] private OwnerOfCell startOwner = OwnerOfCell.None;
     [Space(15)]
     [SerializeField] private LineRenderer line;
@@ -31,11 +32,6 @@ public class Cell : MonoBehaviour
         UnSelecte();
 
         CellManager.OnCellCreate.Invoke(this);
-
-        //if (cellRadius != null)
-        //{
-        //    cellRadius.rectTransform.LeanScale(new Vector3();
-        //}
     }
 
 
@@ -65,7 +61,7 @@ public class Cell : MonoBehaviour
         => line.enabled = false;
 
 
-    // Выпускает пацанов
+    // Выпускает мини пацанов
     public void Atack(Vector3 target)
     {
         int cells = (int)Mathf.Round((float)amountCells / 2);
@@ -84,7 +80,7 @@ public class Cell : MonoBehaviour
     }
 
 
-    // Cоприкaсается с пацанамиs
+    // Принимает мини пацанов
     public void TakeCells(int amount, Player player)
     {
         if (player.owner == this.player.owner)
@@ -100,7 +96,8 @@ public class Cell : MonoBehaviour
         UpdateValue();
     }
 
-
+    
+    // Рисует линию от клетки к курсору(пальцу)
     public void DrawLine(Vector3 touchPos)
     {
         line.enabled = true;
@@ -109,13 +106,14 @@ public class Cell : MonoBehaviour
     }
 
 
+    // Захват клетки
     private void CaptureCell(Player player)
     {
-        StartCoroutine(PlusOneCellRoutine());
         CellManager.OnCellOwnerChanged?.Invoke(this, player.owner);
 
         this.player = player;
         cellCenter.color = this.player.color;
+        StartCoroutine(PlusOneCellRoutine());
     }
 
 
@@ -143,14 +141,13 @@ public class Cell : MonoBehaviour
             CellManager.OnCellOwnerChanged?.Invoke(this, OwnerOfCell.None);
             player = PlayerManager.nonePlayer;
 
+            UnSelecte();
             cellCenter.color = player.color;
             amountOfCellsText.text = string.Empty;
 
             StopCoroutine(PlusOneCellRoutine());
             return;
         }
-        else if (amountCells >= maxAmountCells)
-            amountCells = maxAmountCells;
         else if (amountCells < 0)
             amountCells = 1;
 
@@ -158,15 +155,26 @@ public class Cell : MonoBehaviour
     }
 
 
+    // Со временем добавляет по 1 единице клетки 
     private IEnumerator PlusOneCellRoutine()
     {
-        yield return new WaitForSeconds(plusOneCellRate);
+        yield return new WaitForSeconds(1f);
 
-        if (player.owner != OwnerOfCell.None)
+        while (player.owner != OwnerOfCell.None)
         {
-            amountCells++;
-            UpdateValue();
+            if (amountCells < maxAmountCells)
+            {
+                amountCells++;
+                UpdateValue();
+                yield return new WaitForSeconds(plusOneCellRate);
+            }
+            else if (amountCells > maxAmountCells)
+            {
+                amountCells -= 2;
+                UpdateValue();
+                yield return new WaitForSeconds(minusTwoCellRate);
+            }
+            else yield return new WaitForSeconds(1f);
         }
-        StartCoroutine(PlusOneCellRoutine());
     }
 }
