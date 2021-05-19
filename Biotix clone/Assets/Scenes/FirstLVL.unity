@@ -1803,9 +1803,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff136e99bccbf747a1dfff1e37f6fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeStepFactor: 0.845
+  timeStepFactor: 0.9
   SelecteCellFactor: 1
-  RandFactor: 1
+  RandFactor: 0.8
   startTimeStep: 2
 --- !u!4 &936096856
 Transform:

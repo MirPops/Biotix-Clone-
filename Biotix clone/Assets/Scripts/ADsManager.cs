@@ -3,18 +3,14 @@ using UnityEngine.Advertisements;
 
 public class ADsManager : MonoBehaviour, IUnityAdsListener
 {
-
-    string gameId = "4129403";
-    //string mySurfacingId = "rewardedVideo";
-    bool testMode = false;
+    private string gameId = "4129403";
+    private bool testMode = false;
 
     // Initialize the Ads listener and service:
     void Start()
     {
         Advertisement.AddListener(this);
         Advertisement.Initialize(gameId, testMode);
-
-        //Time.timeScale = 4;
     }
 
     public static void ShowRewardedVideo()

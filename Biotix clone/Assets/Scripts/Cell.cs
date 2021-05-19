@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -12,7 +11,9 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private float offSetSpawnCells = 0.5f;
     [SerializeField] private float plusOneCellRate = 1.5f;
-    [SerializeField] private float minusTwoCellRate = 0.8f;
+    [SerializeField] private float waitTimeRoutine = 1f;
+    [SerializeField] private float minusCellRate = 0.8f;
+    [SerializeField] private int minusForOverload = 2;
     [SerializeField] private OwnerOfCell startOwner = OwnerOfCell.None;
     [Space(15)]
     [SerializeField] private LineRenderer line;
@@ -35,6 +36,7 @@ public class Cell : MonoBehaviour
     }
 
 
+    // Выбор клетки
     public Cell SelectCell(Player player)
     {
         if (this.player.owner == player.owner)
@@ -96,8 +98,8 @@ public class Cell : MonoBehaviour
         UpdateValue();
     }
 
-    
-    // Рисует линию от клетки к курсору(пальцу)
+
+    // Рисует линию от клетки к курсору(тачу)
     public void DrawLine(Vector3 touchPos)
     {
         line.enabled = true;
@@ -117,6 +119,7 @@ public class Cell : MonoBehaviour
     }
 
 
+    // Первое обновление клетки(при запуске)
     private void FirstUpdateValue()
     {
         cellCenter.color = player.color;
@@ -128,12 +131,16 @@ public class Cell : MonoBehaviour
         else if (amountCells > maxAmountCells)
             amountCells = maxAmountCells;
         else if (amountCells == 0 || amountCells < 0)
+        {
             amountOfCellsText.text = string.Empty;
-        else
-            amountOfCellsText.text = amountCells.ToString();
+            return;
+        }
+
+        amountOfCellsText.text = amountCells.ToString();
     }
 
 
+    // Обновление клетки
     private void UpdateValue()
     {
         if (amountCells == 0)
@@ -155,10 +162,10 @@ public class Cell : MonoBehaviour
     }
 
 
-    // Со временем добавляет по 1 единице клетки 
+    // Со временем добавляет по 1 единице клетки или отнимает по 2 если содержит больше максимального 
     private IEnumerator PlusOneCellRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(waitTimeRoutine);
 
         while (player.owner != OwnerOfCell.None)
         {
@@ -170,11 +177,11 @@ public class Cell : MonoBehaviour
             }
             else if (amountCells > maxAmountCells)
             {
-                amountCells -= 2;
+                amountCells -= minusForOverload;
                 UpdateValue();
-                yield return new WaitForSeconds(minusTwoCellRate);
+                yield return new WaitForSeconds(minusCellRate);
             }
-            else yield return new WaitForSeconds(1f);
+            else yield return new WaitForSeconds(waitTimeRoutine);
         }
     }
 }

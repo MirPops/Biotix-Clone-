@@ -14,7 +14,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -38,9 +37,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEngine.Advertisements.Editor.dll:
-    - UnityEngine.Advertisements.Placeholder
-    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -48,7 +44,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/FirstLVL.unity:
     - Class: 1
@@ -83,8 +78,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 1828}
     - Class: 114
       Script: {instanceID: 2118}
-    - Class: 114
-      Script: {instanceID: 2126}
     - Class: 114
       Script: {instanceID: 2480}
     - Class: 114
@@ -1034,7 +1027,7 @@ ScriptsOnlyBuild:
     className: VertexZoom
   - hash:
       serializedVersion: 2
-      Hash: 52e3bb309b2280a8b72c320d7d5ef6a0
+      Hash: a7195e44cb87eb030690cd9f935cd686
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1098,4 +1091,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/SecondLVL.unity
   - Assets/Scenes/ThirdLVL.unity
   playerPath: D:/Projects Unity/Biotix Clone Github/Biotix clone/build/biotix clone
-    test12.apk
+    test13.apk

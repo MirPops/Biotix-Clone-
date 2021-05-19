@@ -1,22 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private OwnerOfCell owner;
     [SerializeField] private Camera mainCamera;
-    private Player player;
     private List<Cell> selectedCells;
-
+    private Player player;
+    private Vector2 startPos;
+    private Vector2 endPos;
 
     private void Start()
     {
         player = PlayerManager.Instance.GetPlayer(owner);
         selectedCells = new List<Cell>();
     }
-
 
     void Update()
     {
@@ -25,53 +23,48 @@ public class PlayerController : MonoBehaviour
             if (selectedCells.Count > 0)
                 for (int i = 0; i < selectedCells.Count; i++)
                     selectedCells[i].Offline();
+            startPos = Vector2.zero;
+            endPos = Vector2.zero;
             return;
         }
 
+        // Рейкаст по тачу
         Touch touch = Input.GetTouch(0);
         Vector2 pos = mainCamera.ScreenToWorldPoint(touch.position);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+        // Запись координат при начале и конце тача
+        if (touch.phase == TouchPhase.Began)
+            startPos = touch.position;
+        else if (touch.phase == TouchPhase.Ended)
+            endPos = touch.position;
 
         if (hit.transform != null)
         {
             Cell selectedCell = hit.transform.GetComponent<Cell>();
             if (selectedCell == null) return;
 
-            //if ((touch.phase == TouchPhase.Began || isTouchMoved(touch)) && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
-            //{
-            //    selectedCells.Add(selectedCell.SelectCell(player));
-            //    return;
-            //}
-            //else if (selectedCells.Count > 0 && ((touch.phase == TouchPhase.Began && !isTouchMoved(touch)) || (touch.phase == TouchPhase.Ended && isTouchMoved(touch))))
-            //{
-            //    Atack(selectedCell);
-            //}
-
-            // Свайп
-            if (touch.deltaPosition.magnitude > 0f)
+            // Механика тача и свайпа
+            if (selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
             {
-                if (touch.phase == TouchPhase.Moved && selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
+                if ((startPos != touch.position) || (startPos == endPos))
+                {
                     selectedCells.Add(selectedCell.SelectCell(player));
-                else if (touch.phase == TouchPhase.Ended && selectedCells.Count > 0)
-                    Atack(selectedCell);
-
+                }
             }
-            // Просто тач
-            else if (touch.phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended && selectedCells.Count > 0)
             {
-                if (selectedCell.player.owner == player.owner && !selectedCells.Contains(selectedCell))
-                    selectedCells.Add(selectedCell.SelectCell(player));
-                else if (selectedCells.Count > 0)
-                    Atack(selectedCell);
+                Atack(selectedCell);
             }
         }
-        else if (touch.phase == TouchPhase.Ended && touch.deltaPosition.magnitude == 0)
+        // При таче не по клетке выбранные клетки анулируются
+        else if (startPos == endPos && selectedCells.Count > 0)
         {
-            if (selectedCells.Count > 0)
-                UnSelect();
+            UnSelect();
         }
-
-        if (selectedCells.Count > 0)
+        
+        // Прорисовка линии за тачем от всех выбранных клеток
+        if (startPos != touch.position && selectedCells.Count > 0)
         {
             for (int i = 0; i < selectedCells.Count; i++)
             {
@@ -80,14 +73,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UnSelect()
-    {
-        foreach (Cell cell in selectedCells)
-            cell.UnSelecte();
 
-        selectedCells.Clear();
-    }
-
+    // Если аткует свою клетку, то таргет клетке не атакует сама себя
     private void Atack(Cell cell)
     {
         Vector3 target = cell.SelectedAsTarget();
@@ -106,6 +93,13 @@ public class PlayerController : MonoBehaviour
         UnSelect();
     }
 
-    private bool isTouchMoved(Touch touch)
-        => touch.deltaPosition.magnitude > 1.5f;
+
+    // Анселектид все выбранные клетки
+    private void UnSelect()
+    {
+        foreach (Cell cell in selectedCells)
+            cell.UnSelecte();
+
+        selectedCells.Clear();
+    }
 }

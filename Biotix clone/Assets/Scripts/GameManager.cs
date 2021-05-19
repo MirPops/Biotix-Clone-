@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,10 +25,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Так как только 3 уровня то после последнего ничего не происходит
     public static void LoadNextLVL()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        if (index < 2)
-            SceneManager.LoadScene(index + 1);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(nextSceneIndex);
+        else
+            print("You win)))");
     }
 }

@@ -70,7 +70,7 @@ public class AIBot : MonoBehaviour
     }
 
 
-    // Ищет рандомную не свою клетку
+    // Ищет рандомную клетку
     private Cell FindRandom()
     {
         List<Cell> cells = new List<Cell>();
@@ -97,7 +97,7 @@ public class AIBot : MonoBehaviour
 
             float randFactor = Random.Range(0.5f, SelecteCellFactor);
 
-            if (cell.amountCells >= (int)(cell.maxAmountCells * randFactor) / 2)      // Недоведенная до ума рациональность бота
+            if (cell.amountCells >= (int)(cell.maxAmountCells * randFactor) / 2)
                 return cell;
             else
                 indexes.RemoveAt(randIndex);
