@@ -14,7 +14,7 @@ public class MiniCell : MonoBehaviour
 
 
 
-    public void atack(Vector2 target, Player player)
+    public void Atack(Vector2 target, Player player)
     {
         this.target = target;
         this.player = player;
@@ -28,8 +28,9 @@ public class MiniCell : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Cell cell = collision.GetComponent<Cell>();
+        if (cell == null) return;
 
-        if (cell.transform.position.x == target.x && cell.transform.position.y == target.y)
+        if (Mathf.Approximately(cell.transform.position.x, target.x) && Mathf.Approximately(cell.transform.position.y, target.y))
         {
             cell.TakeCells(amount, player);
             Destroy(gameObject);

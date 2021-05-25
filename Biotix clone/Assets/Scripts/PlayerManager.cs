@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     static public PlayerManager Instance { get; private set; }
-    static public Player nonePlayer { get; private set; }
+    static public Player NonePlayer { get; private set; }
 
     [SerializeField] private Color colorOfPlayer1;
     [SerializeField] private Color colorOfBotAi;
@@ -29,6 +29,6 @@ public class PlayerManager : MonoBehaviour
             { OwnerOfCell.AIBot, colorOfBotAi },
             { OwnerOfCell.None, colorOfNonePlayer }
         };
-        nonePlayer = new Player { owner = OwnerOfCell.None, color = colorOfNonePlayer };
+        NonePlayer = new Player { owner = OwnerOfCell.None, color = colorOfNonePlayer };
     }
 }

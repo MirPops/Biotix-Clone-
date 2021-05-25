@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -343,7 +347,7 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 0
@@ -414,6 +418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -563,7 +571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &493117310
 GameObject:
@@ -714,6 +722,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -823,6 +835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -1031,7 +1047,7 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 0
@@ -1165,7 +1181,7 @@ MonoBehaviour:
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 0
@@ -1201,6 +1217,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -1446,6 +1466,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -1556,6 +1580,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -1665,6 +1693,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -1801,6 +1833,7 @@ MonoBehaviour:
   SelecteCellFactor: 0.5
   RandFactor: 0
   startTimeStep: 2
+  minTimeStep: 0.1
 --- !u!4 &936096856
 Transform:
   m_ObjectHideFlags: 0
@@ -1813,7 +1846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &937246258
 PrefabInstance:
@@ -1822,6 +1855,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -1927,6 +1964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -2135,9 +2176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2212,10 +2253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.84313726}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2319,6 +2360,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -2651,6 +2696,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -3042,6 +3091,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -3242,7 +3295,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 50
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 1
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3301,6 +3354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -3546,6 +3603,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -3689,7 +3750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1847132709
 PrefabInstance:
@@ -3791,6 +3852,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7983765435782074539, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983765435782074539, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
       propertyPath: parentOfMiniCells
       value: 
       objectReference: {fileID: 197884940}
@@ -3878,6 +3943,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: 04199badcef48e8438b8c4492e05b634, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -3988,6 +4057,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1066382433}
     m_Modifications:
+    - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 11936950510538164, guid: dfe704132604c4d43a1f6b905e0d212a, type: 3}
       propertyPath: parentOfMiniCells
       value: 
@@ -4192,6 +4265,10 @@ PrefabInstance:
     - target: {fileID: 7983765435782074539, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
       propertyPath: startOwner
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983765435782074539, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
+      propertyPath: cursorImage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7983765435782074539, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
       propertyPath: parentOfMiniCells

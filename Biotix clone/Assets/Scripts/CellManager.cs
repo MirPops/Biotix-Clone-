@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    public static List<Cell> noneCells { get; private set; }
+    public static List<Cell> NoneCells { get; private set; }
     public static List<Cell> Player1Cells { get; private set; }
     public static List<Cell> AIBotCells { get; private set; }
 
@@ -12,7 +12,7 @@ public class CellManager : MonoBehaviour
 
     private void Awake()
     {
-        noneCells = new List<Cell>();
+        NoneCells = new List<Cell>();
         Player1Cells = new List<Cell>();
         AIBotCells = new List<Cell>();
 
@@ -38,7 +38,7 @@ public class CellManager : MonoBehaviour
             case OwnerOfCell.AIBot:
                 return AIBotCells;
             case OwnerOfCell.None:
-                return noneCells;
+                return NoneCells;
             default:
                 {
                     print("Warning!!! UnOwned Cell, be carefull!!!");

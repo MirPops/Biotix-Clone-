@@ -33,11 +33,13 @@ public class PlayerController : MonoBehaviour
         Vector2 pos = mainCamera.ScreenToWorldPoint(touch.position);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
 
+
         // «апись координат при начале и конце тача
         if (touch.phase == TouchPhase.Began)
             startPos = touch.position;
         else if (touch.phase == TouchPhase.Ended)
             endPos = touch.position;
+
 
         if (hit.transform != null)
         {
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < selectedCells.Count; i++)
             {
-                selectedCells[i].DrawLine(pos);
+                selectedCells[i].DrawLine(pos, player);
             }
         }
     }
@@ -89,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
 
         for (int i = 0; i < selectedCells.Count; i++)
-            selectedCells[i].Atack(target);
+            selectedCells[i].Atack(target, player);
         UnSelect();
     }
 

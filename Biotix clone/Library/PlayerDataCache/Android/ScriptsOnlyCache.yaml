@@ -18,8 +18,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -71,19 +69,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 1514}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 1828}
+      Script: {instanceID: 2116}
     - Class: 114
-      Script: {instanceID: 2118}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2790}
     - Class: 114
       Script: {instanceID: 2814}
     - Class: 114
@@ -154,17 +152,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 1514}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 1828}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2790}
     - Class: 114
       Script: {instanceID: 2814}
     - Class: 114
@@ -229,17 +227,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 1514}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 1828}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2480}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 2626}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2790}
     - Class: 114
       Script: {instanceID: 2814}
     - Class: 114
@@ -289,19 +287,13 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: cf440b71870fff889926fe3729c047c3
+      Hash: fbafc933f1ce276c700fcd5988fc73ec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cell
@@ -535,6 +527,12 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: 2c4152139cb35c8c38d752830ed64ec1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -757,7 +755,7 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 1e7e3e5eeaa9c0d44e95c4170a525e1f
+      Hash: 2354b49966f4a36d5ae6a9c02c1de0a7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AIBot
@@ -1091,4 +1089,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/SecondLVL.unity
   - Assets/Scenes/ThirdLVL.unity
   playerPath: D:/Projects Unity/Biotix Clone Github/Biotix clone/build/biotix clone
-    test13.apk
+    test16.apk

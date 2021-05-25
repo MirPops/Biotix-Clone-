@@ -3,8 +3,8 @@ using UnityEngine.Advertisements;
 
 public class ADsManager : MonoBehaviour, IUnityAdsListener
 {
-    private string gameId = "4129403";
-    private bool testMode = false;
+    private readonly string gameId = "4129403";
+    private readonly bool testMode = false;
 
     // Initialize the Ads listener and service:
     void Start()

@@ -21,7 +21,6 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject atackCells;
     [SerializeField] private TMP_Text amountOfCellsText;
     [SerializeField] private Image cellCenter;
-    [SerializeField] private Image cellRadius;
     [SerializeField] private Image selectedRing;
 
 
@@ -64,8 +63,11 @@ public class Cell : MonoBehaviour
 
 
     // Выпускает мини пацанов
-    public void Atack(Vector3 target)
+    public void Atack(Vector3 target, Player player)
     {
+        if (player.owner != this.player.owner)
+            return;
+
         int cells = (int)Mathf.Round((float)amountCells / 2);
 
         for (int i = 0; i < cells; i++)
@@ -75,7 +77,7 @@ public class Cell : MonoBehaviour
 
             GameObject miniCell = Instantiate(atackCells, randomPos, Quaternion.identity, parentOfMiniCells.transform);
 
-            miniCell.GetComponent<MiniCell>().atack(target, player);
+            miniCell.GetComponent<MiniCell>().Atack(target, player);
         }
         amountCells -= cells;
         UpdateValue();
@@ -100,8 +102,11 @@ public class Cell : MonoBehaviour
 
 
     // Рисует линию от клетки к курсору(тачу)
-    public void DrawLine(Vector3 touchPos)
+    public void DrawLine(Vector3 touchPos, Player player)
     {
+        if (player.owner != this.player.owner) 
+            return;
+
         line.enabled = true;
         Vector3[] positions = new Vector3[] { new Vector3(transform.position.x, transform.position.y), touchPos };
         line.SetPositions(positions);
@@ -146,7 +151,7 @@ public class Cell : MonoBehaviour
         if (amountCells == 0)
         {
             CellManager.OnCellOwnerChanged?.Invoke(this, OwnerOfCell.None);
-            player = PlayerManager.nonePlayer;
+            player = PlayerManager.NonePlayer;
 
             UnSelecte();
             cellCenter.color = player.color;

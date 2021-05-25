@@ -11,10 +11,13 @@ public class AIBot : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float RandFactor = 0.5f;
     [SerializeField] private float startTimeStep = 2f;
+    [SerializeField] private float minTimeStep = 0.5f;
+    private Player player;
 
 
     private void Start()
     {
+        player = PlayerManager.Instance.GetPlayer(OwnerOfCell.AIBot);
         StartCoroutine(AILogicRoutine());
     }
 
@@ -37,7 +40,7 @@ public class AIBot : MonoBehaviour
                     targetCell = FindNearests(cellForAtack);
 
                 if (targetCell != null)
-                    cellForAtack.Atack(targetCell.SelectedAsTarget());
+                    cellForAtack.Atack(targetCell.SelectedAsTarget(), player);
             }
         }
     }
@@ -49,7 +52,7 @@ public class AIBot : MonoBehaviour
         int index = 0;
         List<Cell> cells = new List<Cell>();
 
-        cells.AddRange(CellManager.noneCells);
+        cells.AddRange(CellManager.NoneCells);
         cells.AddRange(CellManager.Player1Cells);
 
         if (cells.Count == 0) return null;
@@ -75,7 +78,7 @@ public class AIBot : MonoBehaviour
     {
         List<Cell> cells = new List<Cell>();
 
-        cells.AddRange(CellManager.noneCells);
+        cells.AddRange(CellManager.NoneCells);
         cells.AddRange(CellManager.Player1Cells);
         cells.AddRange(CellManager.AIBotCells);
 
@@ -114,6 +117,6 @@ public class AIBot : MonoBehaviour
         for (int i = 0; i < cellsAmount; i++)
             timeStep *= timeStepFactor;
 
-        return timeStep;
+        return timeStep > minTimeStep ? timeStep : minTimeStep;
     }
 }
