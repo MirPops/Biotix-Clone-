@@ -1393,7 +1393,7 @@ MonoBehaviour:
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
   m_enableExtraPadding: 0
-  checkPaddingRequired: 1
+  checkPaddingRequired: 0
   m_isRichText: 0
   m_parseCtrlCharacters: 0
   m_isOrthographic: 1
@@ -1702,10 +1702,10 @@ RectTransform:
   m_Father: {fileID: 1131873535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -307, y: 0}
-  m_SizeDelta: {x: -1720, y: -880}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703116331
 MonoBehaviour:
@@ -3257,10 +3257,10 @@ RectTransform:
   m_Father: {fileID: 1131873535}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: -1720, y: -880}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1653910097
 MonoBehaviour:
@@ -3541,10 +3541,10 @@ RectTransform:
   m_Father: {fileID: 1131873535}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 310, y: 0}
-  m_SizeDelta: {x: -1720, y: -880}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750970202
 MonoBehaviour:
@@ -4304,7 +4304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204654576286521325, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -669
+      value: -668.9999
       objectReference: {fileID: 0}
     - target: {fileID: 4204654576286521325, guid: 9eb91f6dcb53d6643af09afb197de682, type: 3}
       propertyPath: m_AnchoredPosition.y
