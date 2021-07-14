@@ -18,6 +18,8 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -293,7 +295,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: fbafc933f1ce276c700fcd5988fc73ec
+      Hash: cca937cc5fce850d03d65c454e3c76ac
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cell
@@ -1089,4 +1091,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/SecondLVL.unity
   - Assets/Scenes/ThirdLVL.unity
   playerPath: D:/Projects Unity/Biotix Clone Github/Biotix clone/build/biotix clone
-    test16.apk
+    test17.apk

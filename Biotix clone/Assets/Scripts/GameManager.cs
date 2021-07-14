@@ -28,10 +28,15 @@ public class GameManager : MonoBehaviour
     // Так как только 3 уровня то после последнего ничего не происходит
     public static void LoadNextLVL()
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(nextSceneIndex);
+        if (CellManager.AIBotCells.Count == 0)
+        {
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+                SceneManager.LoadScene(nextSceneIndex);
+            else
+                print("You win)))");
+        }
         else
-            print("You win)))");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
